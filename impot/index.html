@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculateur Impôt 2026</title>
+ <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7364296115746786"
+        crossorigin="anonymous"></script>
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom, #1e3a8a, #2563eb, #3b82f6);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 50px;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.ads {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    width: 450px;
+    position: relative;
+}
+h1 { text-align: center; margin-bottom: 10px; }
+p.subtitle { text-align: center; color: #555; margin-bottom: 20px; font-size: 14px; }
+input, select, button { width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; border: 1px solid #ccc; font-size: 14px; }
+button { background: #2563eb; color: white; font-weight: bold; cursor: pointer; transition: 0.3s; }
+button:hover { background: #1e40af; }
+.result { margin-top: 20px; font-weight: bold; text-align: center; font-size: 18px; }
+footer { margin-top: 15px; font-size: 12px; text-align: center; color: #777; }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Calculateur Impôt 2026</h1>
+    <p class="subtitle">Simulation gratuite basée sur le barème progressif français</p>
+    
+    <label>Revenu annuel net (€)</label>
+    <input type="number" id="revenu" placeholder="Ex: 35000">
+
+    <label>Situation</label>
+    <select id="situation">
+        <option value="1">Célibataire</option>
+        <option value="2">Marié / Pacsé</option>
+    </select>
+
+    <label>Nombre d'enfants</label>
+    <input type="number" id="enfants" placeholder="Ex: 1" min="0">
+
+    <label>Réductions / crédits d'impôt (€)</label>
+    <input type="number" id="reduction" placeholder="Ex: 500" min="0">
+
+    <button onclick="calculerImpot()">Calculer mon impôt</button>
+
+    <div class="result" id="resultat"></div>
+
+    <div class="ads">
+    <ins class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-7364296115746786"
+        data-ad-slot="1234567890"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+
+    <footer>
+        © 2026 Simulateur Fiscal - Outil indépendant non affilié à l'administration fiscale.
+    </footer>
+</div>
+
+<script>
+function calculerImpot() {
+    const revenu = parseFloat(document.getElementById('revenu').value) || 0;
+    const situation = parseInt(document.getElementById('situation').value);
+    const enfants = parseInt(document.getElementById('enfants').value) || 0;
+    const reduction = parseFloat(document.getElementById('reduction').value) || 0;
+
+    if (revenu <= 0) {
+        document.getElementById('resultat').innerText = "Veuillez entrer un revenu valide.";
+        return;
+    }
+
+    let parts = situation;
+    parts += enfants * 0.5;
+
+    const revenuParPart = revenu / parts;
+    let impot = 0;
+
+    if (revenuParPart <= 11294) {
+        impot = 0;
+    } else if (revenuParPart <= 28797) {
+        impot = (revenuParPart - 11294) * 0.11;
+    } else if (revenuParPart <= 82341) {
+        impot = (28797 - 11294) * 0.11 + (revenuParPart - 28797) * 0.30;
+    } else if (revenuParPart <= 177106) {
+        impot = (28797 - 11294) * 0.11 + (82341 - 28797) * 0.30 + (revenuParPart - 82341) * 0.41;
+    } else {
+        impot = (28797 - 11294) * 0.11 + (82341 - 28797) * 0.30 + (177106 - 82341) * 0.41 + (revenuParPart - 177106) * 0.45;
+    }
+
+    impot = impot * parts;
+    impot = Math.max(0, impot - reduction);
+
+    document.getElementById('resultat').innerText =
+        "Impôt estimé : " + impot.toFixed(2) + " €";
+}
+</script>
+</body>
+</html>
