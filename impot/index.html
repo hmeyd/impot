@@ -43,44 +43,65 @@ footer { margin-top: 15px; font-size: 12px; text-align: center; color: #777; }
 </style>
 </head>
 <body>
-<div class="container">
-    <h1>Calculateur Impôt 2026</h1>
-    <p class="subtitle">Simulation gratuite basée sur le barème progressif français</p>
-    
-    <label>Revenu annuel net (€)</label>
-    <input type="number" id="revenu" placeholder="Ex: 35000">
+<div style="display:flex; justify-content:center; gap:20px; padding-top:50px; min-height:100vh; background: linear-gradient(to bottom, #1e3a8a, #2563eb, #3b82f6);">
 
-    <label>Situation</label>
-    <select id="situation">
-        <option value="1">Célibataire</option>
-        <option value="2">Marié / Pacsé</option>
-    </select>
+    <!-- Colonne gauche pour publicité -->
+    <div class="ads" style="flex:1; max-width:120px;">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7364296115746786"
+            data-ad-slot="1234567890"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
 
-    <label>Nombre d'enfants</label>
-    <input type="number" id="enfants" placeholder="Ex: 1" min="0">
+    <!-- Colonne centrale pour le calculateur -->
+    <div class="container" style="flex:2; max-width:500px; background:white; padding:40px; border-radius:16px; box-shadow:0 20px 40px rgba(0,0,0,0.2);">
+        <h1>Calculateur Impôt 2026</h1>
+        <p class="subtitle">Simulation gratuite basée sur le barème progressif français</p>
 
-    <label>Réductions / crédits d'impôt (€)</label>
-    <input type="number" id="reduction" placeholder="Ex: 500" min="0">
+        <label>Revenu annuel net (€)</label>
+        <input type="number" id="revenu" placeholder="Ex: 35000">
 
-    <button onclick="calculerImpot()">Calculer mon impôt</button>
+        <label>Situation</label>
+        <select id="situation">
+            <option value="1">Célibataire</option>
+            <option value="2">Marié / Pacsé</option>
+        </select>
 
-    <div class="result" id="resultat"></div>
-    <hr style="margin:30px 0; border:none; border-top:1px solid #eee;">
-    <div class="ads">
-    <ins class="adsbygoogle"
-        style="display:block"
-        data-ad-client="ca-pub-7364296115746786"
-        data-ad-slot="1234567890"
-        data-ad-format="auto"
-        data-full-width-responsive="true"></ins>
-    <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+        <label>Nombre d'enfants</label>
+        <input type="number" id="enfants" placeholder="Ex: 1" min="0">
+
+        <label>Réductions / crédits d'impôt (€)</label>
+        <input type="number" id="reduction" placeholder="Ex: 500" min="0">
+
+        <button onclick="calculerImpot()">Calculer mon impôt</button>
+
+        <div class="result" id="resultat"></div>
+    </div>
+
+    <!-- Colonne droite pour publicité -->
+    <div class="ads" style="flex:1; max-width:120px;">
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7364296115746786"
+            data-ad-slot="1234567891"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+    </div>
+
 </div>
 
-    <footer>
-        © 2026 Simulateur Fiscal - Outil indépendant non affilié à l'administration fiscale.
-    </footer>
+<footer style="text-align:center; margin-top:30px; color:#777; font-size:12px;">
+    © 2026 Simulateur Fiscal - Outil indépendant non affilié à l'administration fiscale.
+</footer>
+
 </div>
 
 <script>
