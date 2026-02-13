@@ -19,8 +19,9 @@ body {
 }
 
 .ads {
-    margin-top: 20px;
     text-align: center;
+     margin-top: 40px;   /* plus d’espace au-dessus */
+    margin-bottom: 30px;
 }
 
 .container {
@@ -30,6 +31,7 @@ body {
     box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     width: 450px;
     position: relative;
+    width: 500px;
 }
 h1 { text-align: center; margin-bottom: 10px; }
 p.subtitle { text-align: center; color: #555; margin-bottom: 20px; font-size: 14px; }
@@ -60,10 +62,10 @@ footer { margin-top: 15px; font-size: 12px; text-align: center; color: #777; }
     <label>Réductions / crédits d'impôt (€)</label>
     <input type="number" id="reduction" placeholder="Ex: 500" min="0">
 
-    <button onclick="calculerImpot()">Calculer mon impôt</button>
+    <button type="button">Calcul automatique activé</button>
 
     <div class="result" id="resultat"></div>
-
+    <hr style="margin:30px 0; border:none; border-top:1px solid #eee;">
     <div class="ads">
     <ins class="adsbygoogle"
         style="display:block"
@@ -83,13 +85,13 @@ footer { margin-top: 15px; font-size: 12px; text-align: center; color: #777; }
 
 <script>
 function calculerImpot() {
-    const revenu = parseFloat(document.getElementById('revenu').value) || 0;
+     const revenu = parseFloat(document.getElementById('revenu').value) || 0;
     const situation = parseInt(document.getElementById('situation').value);
     const enfants = parseInt(document.getElementById('enfants').value) || 0;
     const reduction = parseFloat(document.getElementById('reduction').value) || 0;
 
-    if (revenu <= 0) {
-        document.getElementById('resultat').innerText = "Veuillez entrer un revenu valide.";
+    if (!revenu) {
+        document.getElementById('resultat').innerText = "";
         return;
     }
 
