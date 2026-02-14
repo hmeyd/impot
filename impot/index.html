@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur Impôt 2026</title>
+    <title>Calculateur Impôt 2026 - Temps Réel</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7364296115746786" crossorigin="anonymous"></script>
     <style>
         body {
@@ -18,13 +18,7 @@
             box-sizing: border-box;
         }
 
-        /* Pubs Haut */
-        .ad-header {
-            width: 100%;
-            max-width: 970px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
+        .ad-header { width: 100%; max-width: 970px; margin-bottom: 20px; text-align: center; }
 
         .main-layout {
             display: flex;
@@ -35,12 +29,7 @@
             gap: 20px;
         }
 
-        /* Pubs Latérales (Desktop) */
-        .ad-side {
-            width: 160px;
-            position: sticky;
-            top: 20px;
-        }
+        .ad-side { width: 160px; position: sticky; top: 20px; }
 
         .container {
             background: white;
@@ -48,108 +37,104 @@
             border-radius: 16px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             width: 100%;
-            max-width: 500px; /* Largeur sur PC */
+            max-width: 500px;
             box-sizing: border-box;
         }
 
-        h1 { text-align: center; margin-bottom: 10px; font-size: 24px; color: #1e3a8a; }
+        h1 { text-align: center; margin-bottom: 5px; font-size: 24px; color: #1e3a8a; }
         p.subtitle { text-align: center; color: #555; margin-bottom: 20px; font-size: 14px; }
         
-        label { display: block; margin-top: 10px; font-weight: bold; font-size: 13px; color: #333; }
+        label { display: block; margin-top: 15px; font-weight: bold; font-size: 13px; color: #333; }
         
-        input, select, button { 
+        input, select { 
             width: 100%; 
             padding: 12px; 
             margin: 8px 0; 
             border-radius: 10px; 
-            border: 1px solid #ccc; 
-            font-size: 16px; /* Évite le zoom auto sur Mobile */
+            border: 2px solid #eee; 
+            font-size: 16px; 
             box-sizing: border-box;
+            transition: border-color 0.3s;
         }
 
-        button { 
-            background: #2563eb; 
-            color: white; 
-            font-weight: bold; 
-            cursor: pointer; 
-            border: none;
-            margin-top: 15px;
-            transition: 0.3s;
+        input:focus, select:focus {
+            border-color: #2563eb;
+            outline: none;
         }
-        button:hover { background: #1e40af; }
 
-        .result { 
-            margin-top: 20px; 
-            font-weight: bold; 
-            text-align: center; 
-            font-size: 18px; 
+        .result-container { 
+            margin-top: 25px; 
             background: #f0f7ff; 
-            padding: 15px; 
-            border-radius: 10px;
-            color: #1e3a8a;
+            padding: 20px; 
+            border-radius: 12px;
+            border: 2px solid #2563eb;
+            text-align: center;
         }
+
+        .result-label { font-size: 14px; color: #555; display: block; margin-bottom: 5px; }
+        .result-value { font-size: 28px; font-weight: 900; color: #1e3a8a; }
 
         .ad-inline { margin: 25px 0; text-align: center; }
 
-        footer { margin-top: 15px; font-size: 11px; text-align: center; color: #777; line-height: 1.4; }
+        footer { margin-top: 20px; font-size: 11px; text-align: center; color: #777; line-height: 1.4; }
 
-        /* RESPONSIVE : Mobile et Tablette */
         @media (max-width: 950px) {
-            .ad-side { display: none; } /* Cache les pubs de côté sur mobile */
+            .ad-side { display: none; }
             .container { max-width: 100%; }
-            body { padding-top: 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="ad-header">
-        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="1111111111" data-ad-format="auto" data-full-width-responsive="true"></ins>
+        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="slot_header" data-ad-format="auto" data-full-width-responsive="true"></ins>
         <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div class="main-layout">
         
         <div class="ad-side">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="2222222222" data-ad-format="vertical" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="slot_left" data-ad-format="vertical" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <div class="container">
-            <h1>Calculateur Impôt 2026</h1>
-            <p class="subtitle">Simulation basée sur le barème progressif</p>
+            <h1>Simulateur d'Impôt</h1>
+            <p class="subtitle">Calcul automatique en temps réel</p>
             
             <label>Revenu annuel net (€)</label>
-            <input type="number" id="revenu" placeholder="Ex: 35000">
+            <input type="number" id="revenu" placeholder="Ex: 35000" oninput="calculerImpot()">
 
-            <label>Situation</label>
-            <select id="situation">
-                <option value="1">Célibataire</option>
-                <option value="2">Marié / Pacsé</option>
+            <label>Situation familiale</label>
+            <select id="situation" onchange="calculerImpot()">
+                <option value="1">Célibataire / Divorcé(e)</option>
+                <option value="2">Marié(e) / Pacsé(e)</option>
             </select>
 
             <label>Nombre d'enfants</label>
-            <input type="number" id="enfants" placeholder="Ex: 1" min="0">
+            <input type="number" id="enfants" value="0" min="0" oninput="calculerImpot()">
 
             <div class="ad-inline">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="3333333333" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
+                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="slot_mid" data-ad-format="horizontal" data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
 
             <label>Réductions / crédits d'impôt (€)</label>
-            <input type="number" id="reduction" placeholder="Ex: 500" min="0">
+            <input type="number" id="reduction" value="0" min="0" oninput="calculerImpot()">
 
-            <button onclick="calculerImpot()">Calculer mon impôt</button>
-
-            <div class="result" id="resultat">En attente de calcul...</div>
+            <div class="result-container">
+                <span class="result-label">Votre impôt estimé :</span>
+                <span class="result-value" id="resultat">0 €</span>
+            </div>
 
             <footer>
-                © 2026 Simulateur Fiscal - Outil indépendant non affilié à l'administration fiscale.
+                © 2026 Simulateur Fiscal Indépendant.<br>
+                Calcul basé sur le barème progressif (abattement 10% inclus).
             </footer>
         </div>
 
         <div class="ad-side">
-            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="4444444444" data-ad-format="vertical" data-full-width-responsive="true"></ins>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7364296115746786" data-ad-slot="slot_right" data-ad-format="vertical" data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
     </div>
@@ -162,7 +147,7 @@ function calculerImpot() {
     const reduction = parseFloat(document.getElementById('reduction').value) || 0;
 
     if (revenu <= 0) {
-        document.getElementById('resultat').innerText = "Veuillez entrer un revenu valide.";
+        document.getElementById('resultat').innerText = "0 €";
         return;
     }
 
@@ -174,9 +159,12 @@ function calculerImpot() {
         parts += 1 + (enfants - 2);
     }
 
-    const revenuParPart = (revenu * 0.9) / parts; // Abattement 10% auto
+    // Abattement forfaitaire de 10%
+    const revenuNetAbattu = revenu * 0.9;
+    const revenuParPart = revenuNetAbattu / parts;
     let impot = 0;
 
+    // Barème progressif 2026
     if (revenuParPart <= 11294) {
         impot = 0;
     } else if (revenuParPart <= 28797) {
@@ -189,12 +177,14 @@ function calculerImpot() {
         impot = (28797 - 11294) * 0.11 + (82341 - 28797) * 0.30 + (177106 - 82341) * 0.41 + (revenuParPart - 177106) * 0.45;
     }
 
-    let impotFinal = (impot * parts) - reduction;
-    impotFinal = Math.max(0, Math.round(impotFinal));
+    let total = (impot * parts) - reduction;
+    total = Math.max(0, Math.round(total));
 
-    document.getElementById('resultat').innerText =
-        "Impôt estimé : " + impotFinal.toLocaleString('fr-FR') + " €";
+    document.getElementById('resultat').innerText = total.toLocaleString('fr-FR') + " €";
 }
+
+// Lancer un premier calcul à l'ouverture pour afficher "0 €" proprement
+window.onload = calculerImpot;
 </script>
 </body>
 </html>
